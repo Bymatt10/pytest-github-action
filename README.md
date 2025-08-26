@@ -31,3 +31,7 @@ python manage.py createaccount
 python manage.py runserver
 
 ```
+
+### Swagger API
+
+- http://127.0.0.1:8000/swagger/
