@@ -4,7 +4,9 @@ from stations.models import EquipmentStation, RainfallStation, Station
 from stations.serializers import (
     EquipmentStationSerializer,
     RainfallStationSerializer,
+    StationReadSerializer,
     StationSerializer,
+    RainfallStationReadSerializer,
 )
 
 from django_filters.rest_framework import (
@@ -36,6 +38,12 @@ class StationViewSet(viewsets.ModelViewSet):
             queryset,
         )
 
+    def get_serializer_class(self):
+        if self.action in ["create", "update", "partial_update", "destroy"]:
+            return StationSerializer
+
+        return StationReadSerializer
+
 
 class EquipmentStationViewSet(viewsets.ModelViewSet):
     queryset = EquipmentStation.objects.all()
@@ -50,7 +58,7 @@ class EquipmentStationViewSet(viewsets.ModelViewSet):
         "name",
     ]
     filterset_fields = [
-        "stattion",
+        "station",
     ]
     ordering_fields = ["id"]
 
@@ -83,3 +91,9 @@ class RainfallStationViewSet(viewsets.ModelViewSet):
         return super().paginate_queryset(
             queryset,
         )
+
+    def get_serializer_class(self):
+        if self.action in ["create", "update", "partial_update", "destroy"]:
+            return StationSerializer
+
+        return RainfallStationReadSerializer

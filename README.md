@@ -4,6 +4,7 @@ API REST para registro de variables climáticas como pricipitacción, temperatur
 
 ### Paquetes
 
+- Python 3+
 - Django 5
 - Django Rest Framework
 - Simple JWT
