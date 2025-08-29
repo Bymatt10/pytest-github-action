@@ -102,7 +102,7 @@ DATABASES = {
 if env("DATABASE", default="") == "postgresql":
     DATABASES = {
         "default": {
-            "ENGINE": "django.db.backends.postgresql",
+            "ENGINE": "django.db.backends.postgresql_psycopg2",
             "NAME": env("DATABASE_NAME", default="rocc"),
             "USER": env("DATABASE_USER", default="root"),
             "PASSWORD": env("DATABASE_PASSWORD", default="example"),
@@ -147,6 +147,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = "static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_URL = "/media/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
