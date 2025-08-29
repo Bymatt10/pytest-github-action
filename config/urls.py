@@ -28,6 +28,7 @@ from rest_framework import permissions
 from rest_framework.routers import DefaultRouter
 
 from accounts.viewsets import AccountViewSet
+from authentication.views import CustomTokenObtainPairView
 from histories.viewsets import RainfallHistoryViewSet
 from locations.viewsets import LocationViewSet
 from organizations.viewsets import OrganizationViewSet
@@ -37,7 +38,6 @@ from stations.viewsets import (
     StationViewSet,
 )
 from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
     TokenRefreshView,
     TokenVerifyView,
 )
@@ -68,7 +68,7 @@ def home(request):
 urlpatterns = [
     path("", home, name="home"),
     path("admin/", admin.site.urls),
-    path("api/auth/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
+    path("api/auth/", CustomTokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("api/auth/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
     path("api/auth/verify/", TokenVerifyView.as_view(), name="token_verify"),
     path("api/v1/", include(router.urls)),
