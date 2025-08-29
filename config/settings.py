@@ -24,11 +24,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 env = environ.Env(DEBUG=(bool, False))
-environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 
-SECRET_KEY = env("SECRET_KEY")
-DEBUG = env("DEBUG")
-ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
+# Try to read .env file if it exists, but don't fail if it doesn't
+env_file = os.path.join(BASE_DIR, ".env")
+if os.path.exists(env_file):
+    environ.Env.read_env(env_file)
+
+SECRET_KEY = env("SECRET_KEY", default="django-insecure-fallback-key-for-testing")
+DEBUG = env("DEBUG", default=True)
+ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=["localhost", "127.0.0.1"])
 
 
 # Application definition
@@ -93,6 +97,19 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
+
+# Override database configuration if PostgreSQL is specified
+if env("DATABASE", default="") == "postgresql":
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": env("DATABASE_NAME", default="rocc"),
+            "USER": env("DATABASE_USER", default="root"),
+            "PASSWORD": env("DATABASE_PASSWORD", default="example"),
+            "HOST": env("DATABASE_HOST", default="localhost"),
+            "PORT": env("DATABASE_PORT", default="5432"),
+        }
+    }
 
 
 # Password validation

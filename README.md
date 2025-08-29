@@ -4,7 +4,6 @@ API REST para registro de variables climáticas como pricipitacción, temperatur
 
 ### Paquetes
 
-- Python 3+
 - Django 5
 - Django Rest Framework
 - Simple JWT
@@ -27,11 +26,8 @@ pip install -r requirements.txt
 Renombrar archivo .example a .env y configurar variables de entorno
 
 python manage.py migrate
+
 python manage.py createaccount
 python manage.py runserver
 
 ```
-
-### Swagger API
-
-- http://127.0.0.1:8000/swagger/

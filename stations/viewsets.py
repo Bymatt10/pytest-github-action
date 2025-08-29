@@ -1,16 +1,11 @@
 from rest_framework import viewsets, filters
+from django_filters.rest_framework import DjangoFilterBackend
 
-from stations.models import EquipmentStation, RainfallStation, Station
+from stations.models import Station, EquipmentStation, RainfallStation
 from stations.serializers import (
+    StationSerializer,
     EquipmentStationSerializer,
     RainfallStationSerializer,
-    StationReadSerializer,
-    StationSerializer,
-    RainfallStationReadSerializer,
-)
-
-from django_filters.rest_framework import (
-    DjangoFilterBackend,
 )
 
 
@@ -23,26 +18,14 @@ class StationViewSet(viewsets.ModelViewSet):
         filters.OrderingFilter,
         filters.SearchFilter,
     ]
-    search_fields = [
-        "name",
-    ]
-    filterset_fields = [
-        "organization",
-    ]
-    ordering_fields = ["id"]
+    search_fields = ["name", "code"]
+    filterset_fields = ["organization"]
+    ordering_fields = ["id", "name", "created"]
 
     def paginate_queryset(self, queryset):
         if "paginator" in self.request.query_params:
             return None
-        return super().paginate_queryset(
-            queryset,
-        )
-
-    def get_serializer_class(self):
-        if self.action in ["create", "update", "partial_update", "destroy"]:
-            return StationSerializer
-
-        return StationReadSerializer
+        return super().paginate_queryset(queryset)
 
 
 class EquipmentStationViewSet(viewsets.ModelViewSet):
@@ -54,20 +37,14 @@ class EquipmentStationViewSet(viewsets.ModelViewSet):
         filters.OrderingFilter,
         filters.SearchFilter,
     ]
-    search_fields = [
-        "name",
-    ]
-    filterset_fields = [
-        "station",
-    ]
-    ordering_fields = ["id"]
+    search_fields = ["name", "code", "brand", "model"]
+    filterset_fields = ["station"]
+    ordering_fields = ["id", "name", "created"]
 
     def paginate_queryset(self, queryset):
         if "paginator" in self.request.query_params:
             return None
-        return super().paginate_queryset(
-            queryset,
-        )
+        return super().paginate_queryset(queryset)
 
 
 class RainfallStationViewSet(viewsets.ModelViewSet):
@@ -79,21 +56,10 @@ class RainfallStationViewSet(viewsets.ModelViewSet):
         filters.OrderingFilter,
         filters.SearchFilter,
     ]
-    # search_fields = [
-    #     "name",
-    # ]
-    filterset_fields = ["station", "day", "month", "year"]
-    ordering_fields = ["id"]
+    filterset_fields = ["station", "month", "year"]
+    ordering_fields = ["id", "registration_date", "created"]
 
     def paginate_queryset(self, queryset):
         if "paginator" in self.request.query_params:
             return None
-        return super().paginate_queryset(
-            queryset,
-        )
-
-    def get_serializer_class(self):
-        if self.action in ["create", "update", "partial_update", "destroy"]:
-            return StationSerializer
-
-        return RainfallStationReadSerializer
+        return super().paginate_queryset(queryset)
