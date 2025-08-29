@@ -169,4 +169,4 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
-/media docker-compose.yml
+docker-compose.yml

@@ -26,6 +26,7 @@ pip install -r requirements.txt
 Renombrar archivo .example a .env y configurar variables de entorno
 
 python manage.py migrate
+
 python manage.py createaccount
 python manage.py runserver
 
