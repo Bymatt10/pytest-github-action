@@ -12,4 +12,4 @@ class RainfallHistory(models.Model):
     modified = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.month
+        return str(self.month)
