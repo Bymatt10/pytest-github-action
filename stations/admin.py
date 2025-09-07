@@ -31,12 +31,14 @@ class StationAdmin(ModelAdmin, ImportExportModelAdmin):
 
 class RainfallStationAdmin(ModelAdmin, ImportExportModelAdmin):
     list_display = ("station", "registration_date", "value", "created")
+    fields = ("station", "registration_date", "value")
     ordering = ["-id"]
     resource_class = RainfallStationResource
 
     compressed_fields = True
     import_form_class = ImportForm
     export_form_class = ExportForm
+
 
 admin.site.register(Station, StationAdmin)
 admin.site.register(RainfallStation, RainfallStationAdmin)

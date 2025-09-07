@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-
+from datetime import datetime
 from organizations.models import Organization
 
 
@@ -74,10 +74,8 @@ class RainfallStation(models.Model):
         return self.station.name
 
     def save(self, *args, **kwargs):
-        print(self.registration_date)
-        # day, mothn, year = self.registration_date.split('-')
-        # self.day = day
-        # self.month = mothn
-        # self.year = year
+        self.day = self.registration_date.day
+        self.month = self.registration_date.month
+        self.year = self.registration_date.year
 
         super().save(*args, **kwargs)

@@ -1,6 +1,7 @@
 from import_export import resources
 
 from histories.models import Station
+from stations.models import RainfallStation
 
 
 class StationResource(resources.ModelResource):
@@ -10,5 +11,5 @@ class StationResource(resources.ModelResource):
 
 class RainfallStationResource(resources.ModelResource):
     class Meta:
-        model = Station
-        exclude = ("created", "modified")
+        model = RainfallStation
+        exclude = ("day", "month", "year", "created", "modified")
