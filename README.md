@@ -44,3 +44,11 @@ python manage.py runserver
 pytest
 
 ```
+
+### Run translations
+```
+python manage.py makemessages -l es
+python manage.py makemessages -l en
+python manage.py compilemessages
+
+```

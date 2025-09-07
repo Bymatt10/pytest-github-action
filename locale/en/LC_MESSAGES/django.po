@@ -1,0 +1,258 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-09-07 23:07+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: accounts/admin.py:44
+msgid "Personal info"
+msgstr ""
+
+#: accounts/admin.py:58
+msgid "Permissions"
+msgstr ""
+
+#: accounts/admin.py:72
+msgid "Important dates"
+msgstr ""
+
+#: accounts/models.py:11
+msgid "admin"
+msgstr ""
+
+#: accounts/models.py:13
+msgid "observer"
+msgstr ""
+
+#: accounts/models.py:18
+msgid "photo"
+msgstr ""
+
+#: accounts/models.py:19 organizations/models.py:10
+msgid "phone"
+msgstr ""
+
+#: accounts/models.py:22 organizations/models.py:21 stations/models.py:16
+msgid "organization"
+msgstr ""
+
+#: accounts/models.py:26
+msgid "role"
+msgstr ""
+
+#: accounts/models.py:35
+msgid "user"
+msgstr ""
+
+#: accounts/models.py:36
+msgid "users"
+msgstr ""
+
+#: config/settings.py:155
+msgid "English"
+msgstr ""
+
+#: config/settings.py:156
+msgid "Spanish"
+msgstr ""
+
+#: config/settings.py:253
+msgid "Administration"
+msgstr ""
+
+#: config/settings.py:277
+msgid "Navigation"
+msgstr ""
+
+#: config/settings.py:280
+msgid "Dashboard"
+msgstr ""
+
+#: config/settings.py:285
+msgid "Rains"
+msgstr ""
+
+#: config/settings.py:290
+msgid "Stations"
+msgstr ""
+
+#: config/settings.py:295
+msgid "Historical"
+msgstr ""
+
+#: config/settings.py:300
+msgid "Organizations"
+msgstr ""
+
+#: config/settings.py:305
+msgid "Locations"
+msgstr ""
+
+#: config/settings.py:310
+msgid "Users"
+msgstr ""
+
+#: histories/models.py:9 stations/models.py:23 stations/models.py:37
+#: stations/models.py:53
+msgid "station"
+msgstr ""
+
+#: histories/models.py:11 stations/models.py:60
+msgid "month"
+msgstr ""
+
+#: histories/models.py:13 stations/models.py:63
+msgid "value"
+msgstr ""
+
+#: histories/models.py:16 locations/models.py:28 stations/models.py:19
+#: stations/models.py:40 stations/models.py:66
+msgid "created"
+msgstr ""
+
+#: histories/models.py:20 histories/models.py:21
+msgid "historical"
+msgstr ""
+
+#: locations/models.py:7
+msgid "country"
+msgstr ""
+
+#: locations/models.py:9
+msgid "department"
+msgstr ""
+
+#: locations/models.py:10
+msgid "municipality"
+msgstr ""
+
+#: locations/models.py:11
+msgid "communnity"
+msgstr ""
+
+#: locations/models.py:16 organizations/models.py:8 stations/models.py:8
+#: stations/models.py:31
+msgid "name"
+msgstr ""
+
+#: locations/models.py:17 organizations/models.py:9 stations/models.py:9
+#: stations/models.py:32
+msgid "code"
+msgstr ""
+
+#: locations/models.py:19
+msgid "location_type"
+msgstr ""
+
+#: locations/models.py:25
+msgid "parent"
+msgstr ""
+
+#: locations/models.py:32 organizations/models.py:14
+msgid "location"
+msgstr ""
+
+#: locations/models.py:33
+msgid "locations"
+msgstr ""
+
+#: organizations/models.py:11 organizations/models.py:17 stations/models.py:13
+msgid "address"
+msgstr ""
+
+#: organizations/models.py:22
+msgid "organizations"
+msgstr ""
+
+#: stations/models.py:11
+msgid "latitude"
+msgstr ""
+
+#: stations/models.py:12
+msgid "longitude"
+msgstr ""
+
+#: stations/models.py:24
+msgid "stations"
+msgstr ""
+
+#: stations/models.py:33
+msgid "brand"
+msgstr ""
+
+#: stations/models.py:34
+msgid "model"
+msgstr ""
+
+#: stations/models.py:44
+msgid "equipment"
+msgstr ""
+
+#: stations/models.py:45
+msgid "equipments"
+msgstr ""
+
+#: stations/models.py:56
+msgid "registration_date"
+msgstr ""
+
+#: stations/models.py:59
+msgid "day"
+msgstr ""
+
+#: stations/models.py:61
+msgid "year"
+msgstr ""
+
+#: stations/models.py:70
+msgid "rainfall"
+msgstr ""
+
+#: stations/models.py:71
+msgid "rainfalls"
+msgstr ""
+
+#: templates/admin/index.html:10
+msgid "Django site admin"
+msgstr ""
+
+#: templates/admin/login.html:25
+#, python-format
+msgid ""
+"You are authenticated as %(username)s, but are not authorized to access this "
+"page. Would you like to login to a different account?"
+msgstr ""
+
+#: templates/admin/login.html:46
+msgid "Log in"
+msgstr ""
+
+#: templates/admin/login.html:54
+msgid "Forgotten your password or username?"
+msgstr ""
+
+#: templates/unfold/helpers/add_link.html:5
+#: templates/unfold/helpers/add_link.html:8
+#, python-format
+msgid "Add %(name)s"
+msgstr ""
+
+#: templates/unfold/helpers/site_logo.html:5
+#: templates/unfold/helpers/site_logo.html:7
+#: templates/unfold/helpers/site_logo.html:9
+msgid "Home"
+msgstr ""
