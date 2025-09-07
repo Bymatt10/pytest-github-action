@@ -20,6 +20,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.http import HttpResponse
+from django.views.generic import RedirectView
 
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
@@ -64,9 +65,12 @@ router.register("rainfall", RainfallStationViewSet)
 def home(request):
     return HttpResponse("pong")
 
+class HomeView(RedirectView):
+    pattern_name = "admin:index"
 
 urlpatterns = [
-    path("", home, name="home"),
+    # path("", home, name="home"),
+    path("", HomeView.as_view(), name="home"),
     path("admin/", admin.site.urls),
     path("api/auth/", CustomTokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("api/auth/refresh/", TokenRefreshView.as_view(), name="token_refresh"),

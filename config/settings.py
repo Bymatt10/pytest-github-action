@@ -15,6 +15,9 @@ from datetime import timedelta
 
 import environ
 import os
+from django.templatetags.static import static
+from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,6 +41,11 @@ ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=["localhost", "127.0.0.1"])
 # Application definition
 
 INSTALLED_APPS = [
+    "unfold",
+    "unfold.contrib.filters",
+    "unfold.contrib.forms",
+    "unfold.contrib.inlines",
+    "unfold.contrib.import_export",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -73,7 +81,7 @@ ROOT_URLCONF = "config.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [os.path.join(BASE_DIR, "templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -135,7 +143,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "es"
 
 TIME_ZONE = "UTC"
 
@@ -143,13 +151,18 @@ USE_I18N = True
 
 USE_TZ = True
 
+LANGUAGES = [
+    ("en", _("English")),
+    ("es", _("Spanish")),
+]
+LOCALE_PATHS = [os.path.join(BASE_DIR, "locale")]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = "static/"
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-# STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+# STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
@@ -233,3 +246,83 @@ if DEBUG:
             },
         },
     }
+
+UNFOLD = {
+    "SITE_TITLE": "ACCH ",
+    "SITE_HEADER": "ACCH",
+    "SITE_SUBHEADER": _("Administration"),
+    "SITE_ICON": lambda request: static("images/logo.png"), 
+    "SHOW_HISTORY": True,
+    "SHOW_VIEW_ON_SITE": True,
+    "SHOW_BACK_BUTTON": True,
+    "COLORS": {
+        "primary": {
+            "50": "oklch(0.97 0.014 254.604)",
+            "100": "oklch(0.932 0.032 255.585)",
+            "200": "oklch(0.882 0.059 254.128)",
+            "300": "oklch(0.809 0.105 251.813)",
+            "400": "oklch(0.707 0.165 254.624)",
+            "500": "oklch(0.623 0.214 259.815)",
+            "600": "oklch(0.546 0.245 262.881)",
+            "700": "oklch(0.488 0.243 264.376)",
+            "800": "oklch(0.424 0.199 265.638)",
+            "900": "oklch(0.379 0.146 265.522)",
+            "950": "oklch(0.282 0.091 267.935)",
+        },
+    },
+    # "DASHBOARD_CALLBACK": "dashboard.views.dashboard_callback",
+    "SIDEBAR": {
+        "navigation": [
+            {
+                "title": _("Navigation"),
+                "items": [
+                    {
+                        "title": _("Dashboard"),
+                        "icon": "dashboard",
+                        "link": reverse_lazy("admin:index"),
+                    },
+                    {
+                        "title": _("Rains"),
+                        "icon": "rainy",
+                        "link": reverse_lazy("admin:stations_rainfallstation_changelist"),
+                    },
+                    {
+                        "title": _("Stations"),
+                        "icon": "location_on",
+                        "link": reverse_lazy("admin:stations_station_changelist"),
+                    },
+                    {
+                        "title": _("Historical"),
+                        "icon": "history",
+                        "link": reverse_lazy("admin:histories_rainfallhistory_changelist"),
+                    },
+                    {
+                        "title": _("Organizations"),
+                        "icon": "home",
+                        "link": reverse_lazy("admin:organizations_organization_changelist"),
+                    },
+                    {
+                        "title": _("Locations"),
+                        "icon": "flag",
+                        "link": reverse_lazy("admin:locations_location_changelist"),
+                    },
+                    {
+                        "title": _("Users"),
+                        "icon": "group",
+                        "link": reverse_lazy("admin:accounts_user_changelist"),
+                    },
+                ],
+            },
+        ],
+    },    
+    "LOGIN": {
+        "image": lambda request: static("images/logo.png"),
+        # "redirect_after": None,
+    },
+}
+
+# UNFOLD_STUDIO_ENABLE_RESET_PASSWORD = True
+
+
+LOGIN_REDIRECT_URL = "/admin/"
+LOGOUT_REDIRECT_URL = '/admin/login/' 
