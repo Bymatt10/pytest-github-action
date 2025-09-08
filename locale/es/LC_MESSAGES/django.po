@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-07 23:07+0000\n"
+"POT-Creation-Date: 2025-09-08 00:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -87,25 +87,29 @@ msgstr ""
 msgid "Rains"
 msgstr "LLuvias"
 
-#: config/settings.py:290
-msgid "Stations"
-msgstr "Estaciones"
-
-#: config/settings.py:295
+#: config/settings.py:292
 msgid "Historical"
 msgstr "Histórico"
 
-#: config/settings.py:300
+#: config/settings.py:301 config/settings.py:305
+msgid "Users"
+msgstr "Usuarios"
+
+#: config/settings.py:317
+msgid "Catalogs"
+msgstr "Catalogos"
+
+#: config/settings.py:321
+msgid "Stations"
+msgstr "Estaciones"
+
+#: config/settings.py:326
 msgid "Organizations"
 msgstr "Organizaciones"
 
-#: config/settings.py:305
+#: config/settings.py:333
 msgid "Locations"
 msgstr "Ubicaciones"
-
-#: config/settings.py:310
-msgid "Users"
-msgstr "Usuarios"
 
 #: histories/models.py:9 stations/models.py:23 stations/models.py:37
 #: stations/models.py:53
