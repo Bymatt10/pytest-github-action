@@ -1,0 +1,6 @@
+id,name,code,latitude,longitude,address,organization
+,station1,st01,10.0,20.0,address1,1
+,station2,st02,10.0,20.0,address2,1
+,station3,st03,10.0,20.0,address3,1
+
+

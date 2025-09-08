@@ -22,7 +22,8 @@ class LocationViewSet(viewsets.ModelViewSet):
     filterset_fields = [
         "location",
     ]
-    ordering_fields = ["id"]
+    # ordering_fields = ["id"]
+    ordering = ["-id"]
 
     def paginate_queryset(self, queryset):
         if "paginator" in self.request.query_params:

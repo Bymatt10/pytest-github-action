@@ -32,7 +32,11 @@ class StationAdmin(ModelAdmin, ImportExportModelAdmin):
 class RainfallStationAdmin(ModelAdmin, ImportExportModelAdmin):
     list_display = ("station", "registration_date", "value", "created")
     fields = ("station", "registration_date", "value")
+    list_filter = ("station", "year", "month")
+    date_hierarchy = "registration_date"
     ordering = ["-id"]
+    list_per_page = 31
+
     resource_class = RainfallStationResource
 
     compressed_fields = True
