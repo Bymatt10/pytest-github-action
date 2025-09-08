@@ -251,7 +251,7 @@ UNFOLD = {
     "SITE_TITLE": "ACCH ",
     "SITE_HEADER": "ACCH",
     "SITE_SUBHEADER": _("Administration"),
-    "SITE_ICON": lambda request: static("images/logo.png"), 
+    "SITE_ICON": lambda request: static("images/logo.png"),
     "SHOW_HISTORY": True,
     "SHOW_VIEW_ON_SITE": True,
     "SHOW_BACK_BUTTON": True,
@@ -284,37 +284,60 @@ UNFOLD = {
                     {
                         "title": _("Rains"),
                         "icon": "rainy",
-                        "link": reverse_lazy("admin:stations_rainfallstation_changelist"),
+                        "link": reverse_lazy(
+                            "admin:stations_rainfallstation_changelist"
+                        ),
                     },
+                    {
+                        "title": _("Historical"),
+                        "icon": "history",
+                        "link": reverse_lazy(
+                            "admin:histories_rainfallhistory_changelist"
+                        ),
+                    },
+                ],
+            },
+            {
+                "title": _("Users"),
+                "collapsible": True,
+                "items": [
+                    {
+                        "title": _("Users"),
+                        "icon": "account_circle",
+                        "link": reverse_lazy("admin:accounts_user_changelist"),
+                    },
+                    # {
+                    #     "title": _("Groups"),
+                    #     "icon": "group",
+                    #     "link": reverse_lazy("admin:auth_group_changelist"),
+                    # },
+                ],
+            },
+            {
+                "title": _("Catalogs"),
+                "collapsible": True,
+                "items": [
                     {
                         "title": _("Stations"),
                         "icon": "location_on",
                         "link": reverse_lazy("admin:stations_station_changelist"),
                     },
                     {
-                        "title": _("Historical"),
-                        "icon": "history",
-                        "link": reverse_lazy("admin:histories_rainfallhistory_changelist"),
-                    },
-                    {
                         "title": _("Organizations"),
                         "icon": "home",
-                        "link": reverse_lazy("admin:organizations_organization_changelist"),
+                        "link": reverse_lazy(
+                            "admin:organizations_organization_changelist"
+                        ),
                     },
                     {
                         "title": _("Locations"),
                         "icon": "flag",
                         "link": reverse_lazy("admin:locations_location_changelist"),
                     },
-                    {
-                        "title": _("Users"),
-                        "icon": "group",
-                        "link": reverse_lazy("admin:accounts_user_changelist"),
-                    },
                 ],
             },
         ],
-    },    
+    },
     "LOGIN": {
         "image": lambda request: static("images/logo.png"),
         # "redirect_after": None,
@@ -325,4 +348,4 @@ UNFOLD = {
 
 
 LOGIN_REDIRECT_URL = "/admin/"
-LOGOUT_REDIRECT_URL = '/admin/login/' 
+LOGOUT_REDIRECT_URL = "/admin/login/"
