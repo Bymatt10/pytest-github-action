@@ -59,6 +59,7 @@ class AdminUserFactory(UserFactory):
     """Factory for admin users"""
     role = "admin"
     is_staff = True
+    is_superuser = True
 
 
 class ObserverUserFactory(UserFactory):

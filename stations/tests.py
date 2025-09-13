@@ -214,9 +214,7 @@ class TestRainfallStationCRUD:
 
         # Actualizar el registro de lluvia
         rainfall.value = Decimal("50.75")
-        rainfall.day = 20
-        rainfall.month = 6
-        rainfall.year = 2023
+        rainfall.registration_date = date(2023, 6, 20)  # Esto establecerá day=20, month=6, year=2023
         rainfall.save()
 
         # Verificar la actualización
@@ -242,11 +240,13 @@ class TestRainfallStationCRUD:
     def test_rainfall_default_values(self):
         """Test valores por defecto del modelo"""
         station = StationFactory()
+        today = date.today()
         rainfall = RainfallStation.objects.create(
-            station=station, registration_date=date.today()
+            station=station, registration_date=today
         )
 
-        assert rainfall.day == 0
-        assert rainfall.month == 0
-        assert rainfall.year == 0
+        # Los valores day, month, year se establecen automáticamente desde registration_date
+        assert rainfall.day == today.day
+        assert rainfall.month == today.month
+        assert rainfall.year == today.year
         assert rainfall.value is None

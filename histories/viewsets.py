@@ -4,7 +4,7 @@ from django_filters.rest_framework import (
 )
 
 from histories.models import RainfallHistory
-from histories.serializers import RainfallHistorySerializer
+from histories.serializers import RainfallHistorySerializer, RainfallHistoryReadSerializer
 
 
 class RainfallHistoryViewSet(viewsets.ModelViewSet):
@@ -28,3 +28,8 @@ class RainfallHistoryViewSet(viewsets.ModelViewSet):
         return super().paginate_queryset(
             queryset,
         )
+
+    def get_serializer_class(self):
+        if self.action in ["create", "update", "partial_update", "destroy"]:
+            return RainfallHistorySerializer
+        return RainfallHistoryReadSerializer
